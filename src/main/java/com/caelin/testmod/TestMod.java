@@ -1,6 +1,8 @@
 package com.caelin.testmod;
 
 import com.caelin.testmod.entity.ModEntities;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import org.slf4j.Logger;
 
@@ -57,7 +59,7 @@ public class TestMod
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
     public static final DeferredItem<SpawnEggItem> MY_END_COW_SPAWN_EGG = ITEMS.register("my_end_cow_spawn_egg", () -> {
-        SpawnEggItem egg = new SpawnEggItem(ModEntities.MY_END_COW.get(), new Item.Properties());
+        SpawnEggItem egg = new SpawnEggItem(ModEntities.MY_END_COW.get(), new Item.Properties().useItemDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("testmod", "my_end_cow"))));
         return egg;
     });
 
