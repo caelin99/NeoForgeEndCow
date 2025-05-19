@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 public class ModEventHandlers {
     @SubscribeEvent
     public static void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.END_COW.get(),
+        event.put(ModEntities.MY_END_COW.get(),
                 Cow.createAttributes().build());
     }
 }

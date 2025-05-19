@@ -13,7 +13,7 @@ import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 public class ClientModEvents {
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.END_COW.get(),
+        event.registerEntityRenderer(ModEntities.MY_END_COW.get(),
                 MyEndCowRenderer::new);
     }
 }

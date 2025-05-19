@@ -20,7 +20,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.jetbrains.annotations.NotNull;
 
-import static com.caelin.testmod.entity.ModEntities.END_COW;
 
 // The generic type in the superclass should be set to what entity you want to render.
 // If you wanted to enable rendering for any entity, you'd use Entity, like we do here.
@@ -47,6 +46,6 @@ public class MyEndCowRenderer extends LivingEntityRenderer<MyEndCow, LivingEntit
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull LivingEntityRenderState state) {
-        return ResourceLocation.fromNamespaceAndPath("testmod", "end_cow");
+        return ResourceLocation.fromNamespaceAndPath("testmod", "my_end_cow");
     }
 }
