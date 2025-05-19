@@ -1,9 +1,13 @@
-package com.caelin.testmod;
+package com.caelin.endercattle;
 
-import com.caelin.testmod.entity.ModEntities;
+import com.caelin.endercattle.client.ClientModEvents;
+import com.caelin.endercattle.client.EnderCattleClient;
+import com.caelin.endercattle.entity.EndCow;
+import com.caelin.endercattle.entity.ModEntities;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -35,11 +39,11 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(com.caelin.testmod.TestMod.MODID)
-public class TestMod
+@Mod(EnderCattle.MODID)
+public class EnderCattle
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "testmod";
+    public static final String MODID = "endercattle";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
@@ -58,15 +62,15 @@ public class TestMod
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    public static final DeferredItem<SpawnEggItem> MY_END_COW_SPAWN_EGG = ITEMS.register("my_end_cow_spawn_egg", () -> {
-        SpawnEggItem egg = new SpawnEggItem(ModEntities.MY_END_COW.get(), new Item.Properties().useItemDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("testmod", "my_end_cow"))));
+    public static final DeferredItem<SpawnEggItem> END_COW_SPAWN_EGG = ITEMS.register("end_cow_spawn_egg", () -> {
+        SpawnEggItem egg = new SpawnEggItem(ModEntities.END_COW.get(), new Item.Properties().useItemDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("endercattle", "end_cow"))));
         return egg;
     });
 
 
     // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.testmod")) //The language key for the title of your CreativeModeTab
+            .title(Component.translatable("itemGroup.endercattle")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
@@ -75,7 +79,7 @@ public class TestMod
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public TestMod(IEventBus modEventBus, ModContainer modContainer)
+    public EnderCattle(IEventBus modEventBus, ModContainer modContainer)
     {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -98,6 +102,10 @@ public class TestMod
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            com.caelin.endercattle.client.EnderCattleClient.init(modEventBus);
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -119,7 +127,7 @@ public class TestMod
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
             event.accept(EXAMPLE_BLOCK_ITEM);
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
-            event.accept(MY_END_COW_SPAWN_EGG);
+            event.accept(END_COW_SPAWN_EGG);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -128,18 +136,5 @@ public class TestMod
     {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
     }
 }
