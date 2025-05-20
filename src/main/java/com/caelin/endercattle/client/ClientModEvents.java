@@ -2,11 +2,14 @@ package com.caelin.endercattle.client;
 
 import com.caelin.endercattle.EnderCattle;
 import com.caelin.endercattle.entity.EndCow;
+import com.caelin.endercattle.entity.GlowingEyesLayer;
 import com.caelin.endercattle.entity.ModEntities;
 import com.caelin.endercattle.entity.client.EndCowRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -33,4 +36,16 @@ public class ClientModEvents {
         // Registering the custom renderer for EndCow
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);
     }
+
+//    @SubscribeEvent
+//    public static void addLayers(EntityRenderersEvent.AddLayers event) {
+//        // Retrieve the renderer for your specific entity type
+//        EntityRenderer<?, ?> renderer = event.getRenderer(ModEntities.END_COW.get());
+//
+//        // Check that it's your custom renderer
+//        if (renderer instanceof EndCowRenderer endCowRenderer) {
+//            // This cast works because EndCowRenderer already is a RenderLayerParent<LivingEntityRenderState, CowModel>
+//            endCowRenderer.addLayer(new GlowingEyesLayer(endCowRenderer, event.getEntityModels()));
+//        }
+//    }
 }

@@ -1,6 +1,7 @@
 package com.caelin.endercattle.entity.client;
 
 import com.caelin.endercattle.entity.EndCow;
+import com.caelin.endercattle.entity.GlowingEyesLayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -22,6 +23,7 @@ public class EndCowRenderer extends LivingEntityRenderer<EndCow, LivingEntityRen
     // In our constructor, we just forward to super.
     public EndCowRenderer(EntityRendererProvider.Context context) {
         super(context, new CowModel(context.bakeLayer(ModelLayers.COW)), 0.5f);
+        this.addLayer(new GlowingEyesLayer(this, context.getModelSet()));
     }
 
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("endercattle", "textures/entity/end_cow_v2.png");
