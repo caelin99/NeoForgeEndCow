@@ -16,7 +16,8 @@ import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import org.slf4j.Logger;
 
-//@EventBusSubscriber(modid = EnderCattle.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+// Ensuring the event bus subscribes to this class
+@EventBusSubscriber(modid = EnderCattle.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ClientModEvents {
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -29,14 +30,7 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        // Registering the custom renderer for EndCow
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);
-    }
-
-    @SubscribeEvent
-    public static void onRenderNameTag(RenderNameTagEvent.CanRender event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof EndCow) {
-            event.setCanRender(TriState.FALSE); // Suppress name tag rendering
-        }
     }
 }

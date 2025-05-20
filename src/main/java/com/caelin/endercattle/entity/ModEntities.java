@@ -11,19 +11,24 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModEntities {
+
+    // Deferred Register to hold EntityTypes
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(Registries.ENTITY_TYPE, EnderCattle.MODID);
 
-    public static final ResourceKey<EntityType<?>> END_COW_KEY = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("endercattle", "end_cow"));
+    // ResourceKey for the "end_cow" entity type
+    public static final ResourceKey<EntityType<?>> END_COW_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(EnderCattle.MODID, "end_cow"));
 
+    // DeferredHolder for the EndCow entity type
     public static final DeferredHolder<EntityType<?>, EntityType<EndCow>> END_COW =
             ENTITY_TYPES.register("end_cow", () ->
                     EntityType.Builder.of(EndCow::new, MobCategory.CREATURE)
-                            .sized(0.9f, 1.4f)
+                            .sized(0.9f, 1.4f) // Adjust these sizes as needed
                             .build(END_COW_KEY));
 
+    // Registering the entities to the event bus
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
-
     }
 }

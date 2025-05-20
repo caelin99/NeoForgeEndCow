@@ -7,6 +7,7 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +24,7 @@ public class EndCowRenderer extends LivingEntityRenderer<EndCow, LivingEntityRen
         super(context, new CowModel(context.bakeLayer(ModelLayers.COW)), 0.5f);
     }
 
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("endercattle", "textures/entity/end_cow.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("endercattle", "textures/entity/end_cow_v2.png");
 
     public @NotNull LivingEntityRenderState createRenderState() {
         return new LivingEntityRenderState();
@@ -37,7 +38,9 @@ public class EndCowRenderer extends LivingEntityRenderer<EndCow, LivingEntityRen
     @Override
     public void render(LivingEntityRenderState state, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(state, poseStack, bufferSource,packedLight);
+
     }
+
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull LivingEntityRenderState state) {
