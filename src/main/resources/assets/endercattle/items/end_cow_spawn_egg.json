@@ -5,11 +5,11 @@
     "tints": [
       {
         "type": "minecraft:constant",
-        "value": -10040065   // Light purple (primary)
+        "value": -10040065
       },
       {
         "type": "minecraft:constant",
-        "value": -16751104   // End green/eye color (spots)
+        "value": -16751104
       }
     ]
   }
