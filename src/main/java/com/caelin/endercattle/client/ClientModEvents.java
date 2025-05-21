@@ -17,6 +17,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.util.TriState;
+import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 import org.slf4j.Logger;
 
 // Ensuring the event bus subscribes to this class
@@ -36,6 +37,8 @@ public class ClientModEvents {
         // Registering the custom renderer for EndCow
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);
     }
+
+
 
 //    @SubscribeEvent
 //    public static void addLayers(EntityRenderersEvent.AddLayers event) {

@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Display;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -40,9 +41,13 @@ public class EndCowRenderer extends LivingEntityRenderer<EndCow, LivingEntityRen
     @Override
     public void render(LivingEntityRenderState state, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(state, poseStack, bufferSource,packedLight);
-
     }
 
+    @Override
+    protected void scale(LivingEntityRenderState state, PoseStack stack) {
+        stack.translate(0, 0.3, 0);
+
+    }
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull LivingEntityRenderState state) {

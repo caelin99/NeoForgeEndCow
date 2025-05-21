@@ -9,8 +9,11 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.util.TriState;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 
 @OnlyIn(Dist.CLIENT)
 public class RenderEvents {
@@ -23,4 +26,16 @@ public class RenderEvents {
             event.setCanRender(TriState.FALSE); // Don't render name tag
         }
     }
+
+    @SubscribeEvent
+    public static void onBabySpawn(BabyEntitySpawnEvent event) {
+//        if (event.getChild() instanceof EndCow calf) {
+//            if(calf.isBaby())
+//                calf.setAge(-24000); // Make sure it's a baby
+//                calf.refreshDimensions(); // Force update of size
+//                System.out.println("Forcing dimension refresh for baby EndCow");
+//        }
+    }
+
+
 }

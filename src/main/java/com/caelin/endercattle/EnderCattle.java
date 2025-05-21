@@ -39,24 +39,18 @@ public class EnderCattle {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
-
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item",
-            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).saturationModifier(2f).build()));
-
     public static final DeferredItem<SpawnEggItem> END_COW_SPAWN_EGG = ITEMS.register("end_cow_spawn_egg", () ->
             new SpawnEggItem(ModEntities.END_COW.get(),
                     new Item.Properties().useItemDescriptionPrefix().setId(
-                            ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_cow")))));
+                            ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_cow_spawn_egg")))));
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ENDERCATTLE_TAB = CREATIVE_MODE_TABS.register("endercattle_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.endercattle"))
-                    .withTabsBefore(CreativeModeTabs.COMBAT)
-                    .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+                    .withTabsBefore(CreativeModeTabs.REDSTONE_BLOCKS)
+                    .icon(() -> new ItemStack(Items.ENDER_EYE))
                     .displayItems((parameters, output) -> {
-                        output.accept(EXAMPLE_ITEM.get());
+                        output.accept(END_COW_SPAWN_EGG.get());
                     }).build());
 
     public EnderCattle(IEventBus modEventBus, ModContainer modContainer) {
@@ -95,8 +89,7 @@ public class EnderCattle {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(EXAMPLE_BLOCK_ITEM);
+//        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
             event.accept(END_COW_SPAWN_EGG);
     }
