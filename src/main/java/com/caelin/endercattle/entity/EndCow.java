@@ -1,13 +1,14 @@
 package com.caelin.endercattle.entity;
 
+import com.caelin.endercattle.client.ModEntities;
+import com.caelin.endercattle.client.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +41,7 @@ public class EndCow extends Cow {
      */
     @Override
     public void setCustomName(@Nullable Component name) {
-        super.setCustomName(name);
+        super.setCustomName(Component.translatable("entity.endercattle.end_cow"));
         this.setCustomNameVisible(name != null); // Only show name if not null
     }
 
@@ -63,23 +64,19 @@ public class EndCow extends Cow {
         return baby;
     }
 
-    private void spawnBabyFromSpawnEgg() {
-        EndCow baby = (EndCow) ModEntities.END_COW.get().create(this.level, EntitySpawnReason.BREEDING);
-
-        if (baby != null) {
-            // Set the baby at the same position as the parent
-            baby.setPos(this.getX(), this.getY(), this.getZ());
-
-            // Set the baby to be a baby (negative age)
-            baby.setAge(-24000); // -24000 = fully baby (positive means adult)
-
-            // Optionally: Set the baby's properties, e.g., health, name, attributes
-            baby.setCustomName(Component.translatable("entity.endercattle.end_cow_baby"));
-            baby.getAttribute(Attributes.MAX_HEALTH).setBaseValue(20.0);
-            baby.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.25);
-
-            // Add the baby entity to the world
-            this.level.addFreshEntity(baby);
-        }
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.END_COW_HURT.value();
     }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.END_COW_AMBIENT.value();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ModSounds.END_COW_DEATH.value();
+    }
+
 }

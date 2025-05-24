@@ -1,23 +1,15 @@
 package com.caelin.endercattle.client;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.entity.EndCow;
-import com.caelin.endercattle.entity.GlowingEyesLayer;
-import com.caelin.endercattle.entity.ModEntities;
-import com.caelin.endercattle.entity.client.EndCowRenderer;
+import com.caelin.endercattle.entity.renderer.EndChickenRenderer;
+import com.caelin.endercattle.entity.renderer.EndCowRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RenderNameTagEvent;
-import net.neoforged.neoforge.common.util.TriState;
-import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 import org.slf4j.Logger;
 
 // Ensuring the event bus subscribes to this class
@@ -36,6 +28,7 @@ public class ClientModEvents {
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // Registering the custom renderer for EndCow
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);
+        event.registerEntityRenderer(ModEntities.END_CHICKEN.get(), EndChickenRenderer::new);
     }
 
 

@@ -1,7 +1,6 @@
 package com.caelin.endercattle.client;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.entity.ModEntities;
 import net.minecraft.world.entity.animal.Cow;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

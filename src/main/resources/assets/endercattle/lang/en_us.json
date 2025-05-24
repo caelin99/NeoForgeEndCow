@@ -1,6 +1,9 @@
 {
   "entity.endercattle.end_cow": "End Cow",
+  "entity.endercattle.end_cow_baby": "End Calf",
+  "entity.endercattle.end_chicken": "End Chicken",
+  "entity.endercattle.end_chicken_baby": "End Chick",
+
   "item.endercattle.end_cow_spawn_egg": "End Cow Spawn Egg",
-  "itemGroup.endercattle": "Ender Cattle",
-  "entity.endercattle.end_cow_baby": "End Calf"
+  "itemGroup.endercattle": "Ender Cattle"
 }

@@ -1,0 +1,28 @@
+{
+  "end_cow.ambient":{
+    "sounds": [
+      {
+        "name":"endercattle:end_cow/end_cow_ambient1", "weight": 3
+      },
+      {
+        "name":"endercattle:end_cow/end_cow_ambient2", "weight": 1
+      },
+      {
+        "name":"endercattle:end_cow/end_cow_ambient3", "weight": 3, "volume": 0.8
+      }
+    ]
+  },
+  "end_cow.hurt":{
+    "category": "hostile",
+    "sounds": [
+      {
+        "name":"endercattle:end_cow/end_cow_hurt","volume": 0.5
+      }
+    ]
+  },
+  "end_cow.death":{
+    "sounds": [
+      "endercattle:end_cow/end_cow_death"
+    ]
+  }
+}

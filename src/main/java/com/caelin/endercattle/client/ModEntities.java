@@ -1,6 +1,8 @@
-package com.caelin.endercattle.entity;
+package com.caelin.endercattle.client;
 
 import com.caelin.endercattle.EnderCattle;
+import com.caelin.endercattle.entity.EndChicken;
+import com.caelin.endercattle.entity.EndCow;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -26,6 +28,17 @@ public class ModEntities {
                     EntityType.Builder.of(EndCow::new, MobCategory.CREATURE)
                             .sized(0.9f, 1.4f) // Adjust these sizes as needed
                             .build(END_COW_KEY));
+
+    // ResourceKey for the "end_chicken" entity type
+    public static final ResourceKey<EntityType<?>> END_CHICKEN_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(EnderCattle.MODID, "end_chicken"));
+
+    // DeferredHolder for the EndChicken entity type
+    public static final DeferredHolder<EntityType<?>, EntityType<EndChicken>> END_CHICKEN =
+            ENTITY_TYPES.register("end_chicken", () ->
+                    EntityType.Builder.of(EndChicken::new, MobCategory.CREATURE)
+                            .sized(0.9f, 1.4f) // Adjust these sizes as needed
+                            .build(END_CHICKEN_KEY));
 
     // Registering the entities to the event bus
     public static void register(IEventBus eventBus) {

@@ -1,18 +1,12 @@
 package com.caelin.endercattle.client;
 
 import com.caelin.endercattle.entity.EndCow;
-import com.caelin.endercattle.entity.client.EndCowRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.util.TriState;
-import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 
 @OnlyIn(Dist.CLIENT)
