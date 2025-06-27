@@ -2,13 +2,13 @@
   "end_cow.ambient":{
     "sounds": [
       {
-        "name":"endercattle:end_cow/end_cow_ambient1", "weight": 3
+        "name":"endercattle:end_cow/end_cow_ambient1", "weight": 1
       },
       {
         "name":"endercattle:end_cow/end_cow_ambient2", "weight": 1
       },
       {
-        "name":"endercattle:end_cow/end_cow_ambient3", "weight": 3, "volume": 0.8
+        "name":"endercattle:end_cow/end_cow_ambient3", "weight": 1, "volume": 0.6
       }
     ]
   },
@@ -16,13 +16,44 @@
     "category": "hostile",
     "sounds": [
       {
-        "name":"endercattle:end_cow/end_cow_hurt","volume": 0.5
+        "name":"endercattle:end_cow/end_cow_hurt","volume": 0.3
       }
     ]
   },
   "end_cow.death":{
     "sounds": [
-      "endercattle:end_cow/end_cow_death"
+      {
+        "name": "endercattle:end_cow/end_cow_death", "volume": 0.7
+      }
+    ]
+  },
+
+  "end_chicken.ambient":{
+    "sounds": [
+      {
+        "name":"endercattle:end_chicken/end_chicken_ambient1", "weight": 1, "volume": 0.6
+      },
+      {
+        "name":"endercattle:end_chicken/end_chicken_ambient2", "weight": 1, "volume": 0.6
+      }
+    ]
+  },
+  "end_chicken.hurt":{
+    "category": "hostile",
+    "sounds": [
+      {
+        "name":"endercattle:end_chicken/end_chicken_hurt", "volume": 0.3
+      }
+    ]
+  },
+  "end_chicken.death":{
+    "sounds": [
+      {
+        "name":"endercattle:end_chicken/end_chicken_death1", "volume": 0.7
+      },
+      {
+        "name":"endercattle:end_chicken/end_chicken_death2", "volume": 0.7
+      }
     ]
   }
 }

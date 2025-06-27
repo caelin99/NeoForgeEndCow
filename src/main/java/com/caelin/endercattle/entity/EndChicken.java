@@ -2,28 +2,28 @@ package com.caelin.endercattle.entity;
 
 import com.caelin.endercattle.client.ModEntities;
 import com.caelin.endercattle.client.ModSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 public class EndChicken extends Chicken {
 
     public EndChicken(EntityType<? extends Chicken> type, Level level) {
-        super(type, level);
-    }
 
-    @Override
-    public void setCustomName(@Nullable Component name) {
-        super.setCustomName(Component.translatable("entity.endercattle.end_chicken"));
-        this.setCustomNameVisible(name != null); // Only show name if not null
+        super(type, level);
     }
 
     @Nullable
@@ -36,9 +36,7 @@ public class EndChicken extends Chicken {
             baby.setPos(this.getX(), this.getY(), this.getZ());
             baby.setAge(-24000); // -24000 = fully baby (positive means adult)
 
-
-            baby.setCustomName(Component.translatable("entity.endercattle.end_chicken_baby"));
-            baby.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1);
+            baby.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.35);
 
 
         }
@@ -58,5 +56,9 @@ public class EndChicken extends Chicken {
     @Override
     protected SoundEvent getDeathSound() {
         return ModSounds.END_CHICKEN_DEATH.value();
+    }
+
+    public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
+        return world.getBlockState(pos.below()).is(Blocks.END_STONE);
     }
 }

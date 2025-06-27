@@ -5,6 +5,7 @@ import com.caelin.endercattle.entity.renderer.EndChickenRenderer;
 import com.caelin.endercattle.entity.renderer.EndCowRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ChickenModel;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,7 +25,7 @@ public class ClientModEvents {
         LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 
-    @SubscribeEvent
+     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // Registering the custom renderer for EndCow
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);

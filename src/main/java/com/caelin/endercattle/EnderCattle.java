@@ -3,6 +3,7 @@ package com.caelin.endercattle;
 import com.caelin.endercattle.client.EnderCattleClient;
 import com.caelin.endercattle.client.ModSounds;
 import com.caelin.endercattle.client.ModEntities;
+import com.caelin.endercattle.client.biome_modifier.BiomeModifierRegister;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -40,6 +41,11 @@ public class EnderCattle {
                     new Item.Properties().useItemDescriptionPrefix().setId(
                             ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_cow_spawn_egg")))));
 
+    public static final DeferredItem<SpawnEggItem> END_CHICKEN_SPAWN_EGG = ITEMS.register("end_chicken_spawn_egg", () ->
+            new SpawnEggItem(ModEntities.END_CHICKEN.get(),
+                    new Item.Properties().useItemDescriptionPrefix().setId(
+                            ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_chicken_spawn_egg")))));
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ENDERCATTLE_TAB = CREATIVE_MODE_TABS.register("endercattle_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.endercattle"))
@@ -47,6 +53,7 @@ public class EnderCattle {
                     .icon(() -> new ItemStack(Items.ENDER_EYE))
                     .displayItems((parameters, output) -> {
                         output.accept(END_COW_SPAWN_EGG.get());
+                        output.accept(END_CHICKEN_SPAWN_EGG.get());
                     }).build());
 
     public EnderCattle(IEventBus modEventBus, ModContainer modContainer) {
@@ -60,6 +67,7 @@ public class EnderCattle {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
+        BiomeModifierRegister.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
