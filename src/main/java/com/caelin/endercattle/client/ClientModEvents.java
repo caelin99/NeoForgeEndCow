@@ -31,8 +31,7 @@ public class ClientModEvents {
         event.registerEntityRenderer(ModEntities.END_COW.get(), EndCowRenderer::new);
         event.registerEntityRenderer(ModEntities.END_CHICKEN.get(), EndChickenRenderer::new);
     }
-
-
+    
 
 //    @SubscribeEvent
 //    public static void addLayers(EntityRenderersEvent.AddLayers event) {

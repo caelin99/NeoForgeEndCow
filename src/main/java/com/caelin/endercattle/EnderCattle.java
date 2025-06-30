@@ -1,14 +1,16 @@
 package com.caelin.endercattle;
 
-import com.caelin.endercattle.client.EnderCattleClient;
-import com.caelin.endercattle.client.ModSounds;
-import com.caelin.endercattle.client.ModEntities;
-import com.caelin.endercattle.client.biome_modifier.BiomeModifierRegister;
+import com.caelin.endercattle.client.*;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -19,13 +21,15 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.*;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+
+import java.util.function.Supplier;
 
 @Mod(EnderCattle.MODID)
 public class EnderCattle {
@@ -56,10 +60,12 @@ public class EnderCattle {
                         output.accept(END_CHICKEN_SPAWN_EGG.get());
                     }).build());
 
+
     public EnderCattle(IEventBus modEventBus, ModContainer modContainer) {
         // Register lifecycle events
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
+
 
         // Register registries
         BLOCKS.register(modEventBus);
@@ -67,18 +73,24 @@ public class EnderCattle {
         CREATIVE_MODE_TABS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
-        BiomeModifierRegister.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
+//        BIOME_MODIFIERS.register(modEventBus);
+
         // Register config
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         // Register this class to NeoForge event bus
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(ForgeEventHandler.class);
 
         // Register client-only stuff
         if (FMLEnvironment.dist == Dist.CLIENT) {
             EnderCattleClient.init(modEventBus);
         }
+
+
+
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM COMMON SETUP");

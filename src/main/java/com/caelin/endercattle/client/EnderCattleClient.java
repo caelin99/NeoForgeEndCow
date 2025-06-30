@@ -13,7 +13,6 @@ public class EnderCattleClient {
         eventBus.addListener(ClientModEvents::onRegisterRenderers);
 
 
-
 //        // ✅ Register client-global events like name tag rendering
 //        NeoForge.EVENT_BUS.addListener(RenderEvents::onRenderNameTag);
 //        //baby end cow kk

@@ -25,7 +25,8 @@ public class ModEntities {
     // DeferredHolder for the EndCow entity type
     public static final DeferredHolder<EntityType<?>, EntityType<EndCow>> END_COW =
             ENTITY_TYPES.register("end_cow", () ->
-                    EntityType.Builder.of(EndCow::new, MobCategory.CREATURE)
+                    EntityType.Builder.of(EndCow::new, MobCategory.MONSTER)
+                            .canSpawnFarFromPlayer()
                             .sized(0.9f, 1.4f) // Adjust these sizes as needed
                             .build(END_COW_KEY));
 

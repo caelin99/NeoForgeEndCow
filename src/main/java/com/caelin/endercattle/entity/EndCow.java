@@ -17,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.DimensionType;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +32,7 @@ public class EndCow extends Cow {
      * @param level The world level where the entity exists.
      */
     public EndCow(EntityType<? extends Cow> type, Level level) {
+
         super(type, level);
     }
 
@@ -66,15 +68,25 @@ public class EndCow extends Cow {
     }
 
     public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
-        boolean canSpawn = world.getBlockState(pos.below()).is(Blocks.DIRT) || (world.getBlockState(pos.below()).is(Blocks.END_STONE) || (world.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK)));
-        if (!canSpawn) {
-            LogUtils.getLogger().info("End Cow cannot spawn at {}: Not DIRT", pos);
-            LogUtils.getLogger().info("End Cow check at {}: Block below is {}", pos, world.getBlockState(pos.below()).getBlock());
+        BlockPos below = pos.below();
+        boolean validBlock = world.getBlockState(below).is(Blocks.DIRT) ||
+                world.getBlockState(below).is(Blocks.END_STONE) ||
+                world.getBlockState(below).is(Blocks.GRASS_BLOCK);
+
+        if (!validBlock) {
+            LogUtils.getLogger().info("End Cow cannot spawn at {}: Invalid block below ({})", pos, world.getBlockState(below).getBlock());
             return false;
-        } else {
-            LogUtils.getLogger().info("End Cow CAN spawn at {}", pos);
-            return true;
         }
-//        return true;
+
+        int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
+        if (blockLight > 7) {
+            LogUtils.getLogger().info("End Cow cannot spawn at {}: Too bright (block light {})", pos, blockLight);
+            return false;
+        }
+
+        LogUtils.getLogger().info("End Cow CAN spawn at {}: Valid block and light level {}", pos, blockLight);
+        return true;
+
     }
+
 }
