@@ -31,7 +31,7 @@ public class GlowingEyesCowLayer extends RenderLayer<LivingEntityRenderState, Co
         model.setupAnim(state);
 
 
-        ModelPart head = ((QuadrupedModel<?>) model).head;
+        ModelPart head = model.head;
         // Render ONLY the head (which contains the eyes) using the glowing texture
         head.render(
                 poseStack,

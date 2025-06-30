@@ -61,4 +61,9 @@ public class EndChicken extends Chicken {
     public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
         return world.getBlockState(pos.below()).is(Blocks.END_STONE);
     }
+
+    @Override
+    public boolean checkSpawnRules(LevelAccessor p_21686_, EntitySpawnReason p_361803_) {
+        return true;
+    }
 }

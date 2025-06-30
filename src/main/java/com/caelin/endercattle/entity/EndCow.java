@@ -17,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -74,19 +75,22 @@ public class EndCow extends Cow {
                 world.getBlockState(below).is(Blocks.GRASS_BLOCK);
 
         if (!validBlock) {
-            LogUtils.getLogger().info("End Cow cannot spawn at {}: Invalid block below ({})", pos, world.getBlockState(below).getBlock());
             return false;
         }
 
         int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
-        if (blockLight > 7) {
-            LogUtils.getLogger().info("End Cow cannot spawn at {}: Too bright (block light {})", pos, blockLight);
-            return false;
-        }
-
-        LogUtils.getLogger().info("End Cow CAN spawn at {}: Valid block and light level {}", pos, blockLight);
-        return true;
+        return blockLight <= 7;
 
     }
+
+    @Override
+    public boolean checkSpawnRules(LevelAccessor p_21686_, EntitySpawnReason p_361803_) {
+        return true;
+    }
+
+//    @Override
+//    public float getWalkTargetValue(BlockPos p_21688_, LevelReader p_21689_) {
+//        return 0.0F;
+//    }
 
 }

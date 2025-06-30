@@ -101,6 +101,8 @@ dependencies {
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
 
+    implementation 'org.spongepowered:mixin:0.8.5' // or latest 0.8.x
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

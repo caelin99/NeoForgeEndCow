@@ -16,6 +16,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -28,9 +29,9 @@ import java.util.Set;
 @EventBusSubscriber(modid = EnderCattle.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
-    public static final ResourceKey<BiomeModifier> ADD_SPAWN_END_COW = ResourceKey.create(
+    public static final ResourceKey<BiomeModifier> ADD_SPAWN_ENDERCATTLE = ResourceKey.create(
             NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(EnderCattle.MODID, "add_spawn_end_cow")
+            ResourceLocation.fromNamespaceAndPath(EnderCattle.MODID, "add_spawn_endercattle")
     );
 
     @SubscribeEvent
@@ -43,7 +44,7 @@ public class DataGenerators {
                 new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
                             HolderGetter<Biome> biomes = bootstrap.lookup(Registries.BIOME);
 
-                            bootstrap.register(ADD_SPAWN_END_COW,
+                            bootstrap.register(ADD_SPAWN_ENDERCATTLE,
                                     new BiomeModifiers.AddSpawnsBiomeModifier(
                                             HolderSet.direct(
                                                     biomes.getOrThrow(Biomes.END_BARRENS),
@@ -52,7 +53,8 @@ public class DataGenerators {
                                                     biomes.getOrThrow(Biomes.THE_END),
                                                     biomes.getOrThrow(Biomes.SMALL_END_ISLANDS)),
                                             List.of(
-                                                    new MobSpawnSettings.SpawnerData(ModEntities.END_COW.get(), 100, 1, 4)
+                                                    new MobSpawnSettings.SpawnerData(ModEntities.END_COW.get(), 20, 1, 4),
+                                                    new MobSpawnSettings.SpawnerData(ModEntities.END_CHICKEN.get(), 20, 2, 5)
                                             )
                                     )
                             );

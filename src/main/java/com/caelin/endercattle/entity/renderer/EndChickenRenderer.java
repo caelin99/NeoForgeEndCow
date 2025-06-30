@@ -49,12 +49,4 @@ public class EndChickenRenderer extends MobRenderer<EndChicken, ChickenRenderSta
         }
         super.render(state, poseStack, bufferSource, packedLight);
     }
-
-//    @Override
-//    protected void scale(ChickenRenderState state, PoseStack poseStack) {
-//        poseStack.scale(1.0F, 1.0F, 1.0F);
-//        if (state.isBaby) {
-//            poseStack.scale(0.5F, 0.5F, 0.5F);
-//        }
-//    }
 }
