@@ -1,8 +1,10 @@
 package com.caelin.endercattle;
 
-import com.caelin.endercattle.client.*;
-import com.caelin.endercattle.entity.renderer.EndChickenRenderer;
-import com.caelin.endercattle.entity.renderer.EndCowRenderer;
+import com.caelin.endercattle.client.item.EndChickenSpawnEggItem;
+import com.caelin.endercattle.client.renderer.EndChickenRenderer;
+import com.caelin.endercattle.client.renderer.EndCowRenderer;
+import com.caelin.endercattle.client.sound.ModSounds;
+import com.caelin.endercattle.common.ModEntities;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -43,7 +45,7 @@ public class EnderCattle {
                             ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_cow_spawn_egg")))));
 
     public static final DeferredItem<SpawnEggItem> END_CHICKEN_SPAWN_EGG = ITEMS.register("end_chicken_spawn_egg", () ->
-            new SpawnEggItem(ModEntities.END_CHICKEN.get(),
+            new EndChickenSpawnEggItem(ModEntities.END_CHICKEN.get(),
                     new Item.Properties().useItemDescriptionPrefix().setId(
                             ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_chicken_spawn_egg")))));
 

@@ -1,13 +1,10 @@
-package com.caelin.endercattle.entity;
+package com.caelin.endercattle.common.entity;
 
-import com.caelin.endercattle.client.ModEntities;
-import com.caelin.endercattle.client.ModSounds;
-import com.mojang.logging.LogUtils;
-import net.minecraft.data.worldgen.DimensionTypes;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.client.resources.sounds.EntityBoundSoundInstance;
-import net.minecraft.client.resources.sounds.SoundInstance;
+import com.caelin.endercattle.common.ModEntities;
+import com.caelin.endercattle.client.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.loot.LootTableSubProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -17,10 +14,10 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
 
 public class EndCow extends Cow {
@@ -68,6 +65,7 @@ public class EndCow extends Cow {
         return ModSounds.END_COW_DEATH.value();
     }
 
+
     public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
         BlockPos below = pos.below();
         boolean validBlock = world.getBlockState(below).is(Blocks.DIRT) ||
@@ -80,7 +78,6 @@ public class EndCow extends Cow {
 
         int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
         return blockLight <= 7;
-
     }
 
     @Override

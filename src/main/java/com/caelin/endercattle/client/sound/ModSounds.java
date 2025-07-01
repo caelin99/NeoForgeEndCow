@@ -1,4 +1,4 @@
-package com.caelin.endercattle.client;
+package com.caelin.endercattle.client.sound;
 
 import com.caelin.endercattle.EnderCattle;
 import net.minecraft.core.registries.BuiltInRegistries;

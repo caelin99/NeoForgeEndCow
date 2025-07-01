@@ -1,15 +1,13 @@
-package com.caelin.endercattle.entity.renderer;
+package com.caelin.endercattle.client.renderer;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.entity.EndCow;
-import com.caelin.endercattle.entity.GlowingEyesCowLayer;
-import com.caelin.endercattle.entity.GlowingEyesLayer;
+import com.caelin.endercattle.common.entity.EndCow;
+import com.caelin.endercattle.client.renderer.layers.GlowingEyesLayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;

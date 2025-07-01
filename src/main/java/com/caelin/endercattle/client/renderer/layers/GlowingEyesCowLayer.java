@@ -1,9 +1,8 @@
-package com.caelin.endercattle.entity;
+package com.caelin.endercattle.client.renderer.layers;
 
 import com.caelin.endercattle.EnderCattle;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.CowModel;
-import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;

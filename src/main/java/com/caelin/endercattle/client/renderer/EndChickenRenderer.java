@@ -1,21 +1,16 @@
-package com.caelin.endercattle.entity.renderer;
+package com.caelin.endercattle.client.renderer;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.entity.EndChicken;
-import com.caelin.endercattle.entity.GlowingEyesLayer;
+import com.caelin.endercattle.common.entity.EndChicken;
+import com.caelin.endercattle.client.renderer.layers.GlowingEyesLayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.ChickenModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.AgeableMobRenderer;
-import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.ChickenRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.Chicken;
-import net.neoforged.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 public class EndChickenRenderer extends MobRenderer<EndChicken, ChickenRenderState, ChickenModel> {

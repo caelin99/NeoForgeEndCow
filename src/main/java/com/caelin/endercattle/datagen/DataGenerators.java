@@ -2,21 +2,23 @@ package com.caelin.endercattle.datagen;
 
 import com.caelin.endercattle.EnderCattle;
 //import com.caelin.endercattle.client.EndCowBiomeModifier;
-import com.caelin.endercattle.client.ModEntities;
+import com.caelin.endercattle.common.ModEntities;
+import com.caelin.endercattle.datagen.loot.ModEntityLootSubProvider;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -37,8 +39,6 @@ public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        var lookupProvider = event.getLookupProvider();
 
         event.createDatapackRegistryObjects(
                 new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
@@ -62,5 +62,14 @@ public class DataGenerators {
                         Set.of(EnderCattle.MODID)
                 );
 
+        event.createProvider((output, lookupProvider) -> new LootTableProvider(
+                output,
+                Set.of(),
+                List.of(new LootTableProvider.SubProviderEntry(
+                        ModEntityLootSubProvider::new,
+                        LootContextParamSets.EMPTY)
+                ),
+                lookupProvider)
+        );
     }
 }
