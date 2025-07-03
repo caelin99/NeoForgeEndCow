@@ -1,10 +1,10 @@
 package com.caelin.endercattle;
 
-import com.caelin.endercattle.client.item.EndChickenSpawnEggItem;
-import com.caelin.endercattle.client.renderer.EndChickenRenderer;
-import com.caelin.endercattle.client.renderer.EndCowRenderer;
-import com.caelin.endercattle.client.sound.ModSounds;
-import com.caelin.endercattle.common.ModEntities;
+import com.caelin.endercattle.item.EndChickenSpawnEggItem;
+import com.caelin.endercattle.client.entity.renderer.EndChickenRenderer;
+import com.caelin.endercattle.client.entity.renderer.EndCowRenderer;
+import com.caelin.endercattle.registrars.ModSounds;
+import com.caelin.endercattle.registrars.ModEntities;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -62,7 +62,6 @@ public class EnderCattle {
                         output.accept(END_CHICKEN_SPAWN_EGG.get());
                     }).build());
 
-
     public EnderCattle(IEventBus modEventBus, ModContainer modContainer) {
 
         // Register lifecycle events
@@ -90,6 +89,8 @@ public class EnderCattle {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+//        event.enqueueWork(() ->
+//                Regions.register(new ModEndRegion()));
         LOGGER.info("HELLO FROM COMMON SETUP");
 
         if (Config.logDirtBlock) {

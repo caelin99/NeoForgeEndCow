@@ -1,8 +1,8 @@
-package com.caelin.endercattle.common;
+package com.caelin.endercattle.registrars;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.common.entity.EndChicken;
-import com.caelin.endercattle.common.entity.EndCow;
+import com.caelin.endercattle.client.entity.EndChicken;
+import com.caelin.endercattle.client.entity.EndCow;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

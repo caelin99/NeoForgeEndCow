@@ -1,10 +1,8 @@
-package com.caelin.endercattle.common.entity;
+package com.caelin.endercattle.client.entity;
 
-import com.caelin.endercattle.common.ModEntities;
-import com.caelin.endercattle.client.sound.ModSounds;
+import com.caelin.endercattle.registrars.ModEntities;
+import com.caelin.endercattle.registrars.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -16,8 +14,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.Nullable;
 
 public class EndCow extends Cow {

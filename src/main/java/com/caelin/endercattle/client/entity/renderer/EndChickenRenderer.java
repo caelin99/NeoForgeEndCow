@@ -1,8 +1,8 @@
-package com.caelin.endercattle.client.renderer;
+package com.caelin.endercattle.client.entity.renderer;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.common.entity.EndChicken;
-import com.caelin.endercattle.client.renderer.layers.GlowingEyesLayer;
+import com.caelin.endercattle.client.entity.EndChicken;
+import com.caelin.endercattle.client.entity.renderer.layers.GlowingEyesLayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.ChickenModel;
 import net.minecraft.client.model.geom.ModelLayers;

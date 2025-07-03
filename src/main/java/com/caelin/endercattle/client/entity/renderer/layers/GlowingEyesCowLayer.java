@@ -1,4 +1,4 @@
-package com.caelin.endercattle.client.renderer.layers;
+package com.caelin.endercattle.client.entity.renderer.layers;
 
 import com.caelin.endercattle.EnderCattle;
 import com.mojang.blaze3d.vertex.PoseStack;

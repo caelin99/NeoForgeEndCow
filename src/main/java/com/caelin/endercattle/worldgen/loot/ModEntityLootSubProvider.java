@@ -1,7 +1,7 @@
-package com.caelin.endercattle.datagen.loot;
+package com.caelin.endercattle.worldgen.loot;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.common.ModEntities;
+import com.caelin.endercattle.registrars.ModEntities;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.EntityLootSubProvider;

@@ -1,7 +1,7 @@
-package com.caelin.endercattle.common.entity;
+package com.caelin.endercattle.client.entity;
 
-import com.caelin.endercattle.common.ModEntities;
-import com.caelin.endercattle.client.sound.ModSounds;
+import com.caelin.endercattle.registrars.ModEntities;
+import com.caelin.endercattle.registrars.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;

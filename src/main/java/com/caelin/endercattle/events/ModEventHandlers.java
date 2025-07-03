@@ -1,8 +1,9 @@
-package com.caelin.endercattle.common;
+package com.caelin.endercattle.events;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.common.entity.EndChicken;
-import com.caelin.endercattle.common.entity.EndCow;
+import com.caelin.endercattle.registrars.ModEntities;
+import com.caelin.endercattle.client.entity.EndChicken;
+import com.caelin.endercattle.client.entity.EndCow;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Chicken;
