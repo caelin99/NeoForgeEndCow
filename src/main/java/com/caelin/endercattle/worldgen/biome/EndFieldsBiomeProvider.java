@@ -1,6 +1,7 @@
 package com.caelin.endercattle.worldgen.biome;
 
 import com.caelin.endercattle.registrars.ModBiomes;
+import com.caelin.endercattle.registrars.ModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,6 +11,8 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.Panda;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -26,11 +29,15 @@ public class EndFieldsBiomeProvider {
     public static void bootstrap(BootstrapContext<Biome> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var worldCarvers = context.lookup(Registries.CONFIGURED_CARVER);
-        context.register(ModBiomes.END_FIELDS, makeEndBiome(placedFeatures, worldCarvers));
+        context.register(ModBiomes.END_FIELDS, makeEndFields(placedFeatures, worldCarvers));
     }
 
-    public static Biome makeEndBiome(HolderGetter<PlacedFeature> placedFeature, HolderGetter<ConfiguredWorldCarver<?>> worldCarver) {
+    public static Biome makeEndFields(HolderGetter<PlacedFeature> placedFeature, HolderGetter<ConfiguredWorldCarver<?>> worldCarver) {
         BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeature, worldCarver);
+
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.END_CHICKEN.get(), 100, 3, 6));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.END_COW.get(), 100, 3, 5));
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -43,7 +50,7 @@ public class EndFieldsBiomeProvider {
                         .waterFogColor(0x050533)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .build())
-                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(generation.build())
                 .build();
     }

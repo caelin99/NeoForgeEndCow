@@ -3,14 +3,15 @@ package com.caelin.endercattle;
 import com.caelin.endercattle.item.EndChickenSpawnEggItem;
 import com.caelin.endercattle.client.entity.renderer.EndChickenRenderer;
 import com.caelin.endercattle.client.entity.renderer.EndCowRenderer;
-import com.caelin.endercattle.registrars.ModSounds;
-import com.caelin.endercattle.registrars.ModEntities;
+import com.caelin.endercattle.registrars.*;
+import com.caelin.endercattle.worldgen.biome.ModSurfaceRules;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -22,8 +23,12 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.*;
+
+import terrablender.api.EndBiomeRegistry;
+
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+import terrablender.api.SurfaceRuleManager;
 
 @Mod(EnderCattle.MODID)
 public class EnderCattle {
@@ -49,6 +54,7 @@ public class EnderCattle {
                     new Item.Properties().useItemDescriptionPrefix().setId(
                             ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, "end_chicken_spawn_egg")))));
 
+
     // Registers a custom creative mode tab for your mod's items
     // - Uses Ender Eye as an icon
     // - Adds custom spawn eggs to the tab display
@@ -70,7 +76,9 @@ public class EnderCattle {
 
         // Register registries
         BLOCKS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
@@ -100,6 +108,11 @@ public class EnderCattle {
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach(item -> LOGGER.info("ITEM >> {}", item));
+
+        event.enqueueWork(() -> {
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.END, EnderCattle.MODID, ModSurfaceRules.end());
+            EndBiomeRegistry.registerHighlandsBiome(ModBiomes.END_FIELDS, 3);
+        });
     }
 
     // Add items to Creative tabs

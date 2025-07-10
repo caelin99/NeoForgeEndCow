@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:grass_block",
+    "minecraft:end_stone",
+    {
+      "id": "#minecraft:dirt",
+      "required": false
+    }
+  ]
+}

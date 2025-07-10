@@ -2,6 +2,7 @@ package com.caelin.endercattle.client.entity;
 
 import com.caelin.endercattle.registrars.ModEntities;
 import com.caelin.endercattle.registrars.ModSounds;
+import com.caelin.endercattle.tags.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -15,7 +16,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 public class EndChicken extends Chicken {
@@ -58,11 +58,20 @@ public class EndChicken extends Chicken {
     }
 
     public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
-        return world.getBlockState(pos.below()).is(Blocks.END_STONE);
+        BlockPos below = pos.below();
+        boolean validBlock = world.getBlockState(below).is(ModTags.ENDERCATTLE_SPAWNABLE_ON);
+
+        if (!validBlock) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     @Override
     public boolean checkSpawnRules(LevelAccessor p_21686_, EntitySpawnReason p_361803_) {
+
         return true;
     }
 }

@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "endercattle:block/end_grass_block"
+      },
+      {
+        "model": "endercattle:block/end_grass_block",
+        "y": 90
+      },
+      {
+        "model": "endercattle:block/end_grass_block",
+        "y": 180
+      },
+      {
+        "model": "endercattle:block/end_grass_block",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "endercattle:block/end_grass_block"
+    }
+  }
+}

@@ -20,7 +20,20 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "endercattle:end_chicken",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 100
+      },
+      {
+        "type": "endercattle:end_cow",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 100
+      }
+    ],
     "misc": [],
     "monster": [],
     "underground_water_creature": [],

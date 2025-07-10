@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "endercattle:block/end_dirt",
+    "particle": "endercattle:block/end_dirt",
+    "side": "endercattle:block/end_grass_block_side",
+    "top": "endercattle:block/end_grass_block_top"
+  }
+}

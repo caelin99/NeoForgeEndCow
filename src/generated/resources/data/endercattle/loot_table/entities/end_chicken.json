@@ -13,17 +13,17 @@
       "entries": [
         {
           "type": "minecraft:empty",
-          "weight": 30
+          "weight": 40
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:feather",
-          "weight": 60
+          "weight": 30
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:egg",
-          "weight": 60
+          "weight": 30
         }
       ],
       "rolls": {

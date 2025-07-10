@@ -95,9 +95,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 // This configuration should be used instead of 'runtimeOnly' to declare
 // a dependency that will be present for runtime testing but that is
 // "optional", meaning it will not be pulled by dependents of this mod.
-configurations {
-    runtimeClasspath.extendsFrom localRuntime
-}
+//configurations {
+//    runtimeClasspath.extendsFrom localRuntime
+//}
 
 dependencies {
     // Specify the version of Minecraft to use.
@@ -107,7 +107,7 @@ dependencies {
     // And its provides the option to then use net.minecraft as the group, and one of; client, server or joined as the module name, plus the game version as version.
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
-    // implementation "curse.maven:terrablender-neoforge-940057:6055021"
+     implementation "curse.maven:terrablender-neoforge-940057:6055021"
     
     // Sponge
     // implementation 'org.spongepowered:mixin:0.8.5' // or latest 0.8.x

@@ -2,9 +2,11 @@ package com.caelin.endercattle.events;
 
 import com.caelin.endercattle.EnderCattle;
 //import com.caelin.endercattle.client.EndCowBiomeModifier;
+import com.caelin.endercattle.client.model.ModModelProvider;
 import com.caelin.endercattle.worldgen.biome.EndFieldsBiomeProvider;
 import com.caelin.endercattle.worldgen.biome_modifiers.EndSpawnModifiers;
 import com.caelin.endercattle.worldgen.loot.ModEntityLootSubProvider;
+import com.caelin.endercattle.worldgen.util.ModBlockTagsProvider;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -28,6 +30,7 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
 
+
         event.createDatapackRegistryObjects(
                 new RegistrySetBuilder()
                         .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, EndSpawnModifiers::bootstrap)
@@ -45,5 +48,8 @@ public class DataGenerators {
                 ),
                 lookupProvider)
         );
+
+        event.createProvider(ModBlockTagsProvider::new);
+        event.createProvider(ModModelProvider::new);
     }
 }

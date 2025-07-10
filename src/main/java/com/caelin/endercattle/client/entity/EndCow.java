@@ -2,6 +2,7 @@ package com.caelin.endercattle.client.entity;
 
 import com.caelin.endercattle.registrars.ModEntities;
 import com.caelin.endercattle.registrars.ModSounds;
+import com.caelin.endercattle.tags.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -12,8 +13,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 public class EndCow extends Cow {
@@ -63,17 +62,17 @@ public class EndCow extends Cow {
 
 
     public static boolean checkMobSpawnRules(EntityType<? extends Mob> type, LevelAccessor world, EntitySpawnReason reason, BlockPos pos, RandomSource random) {
+
         BlockPos below = pos.below();
-        boolean validBlock = world.getBlockState(below).is(Blocks.DIRT) ||
-                world.getBlockState(below).is(Blocks.END_STONE) ||
-                world.getBlockState(below).is(Blocks.GRASS_BLOCK);
+        boolean validBlock = world.getBlockState(below).is(ModTags.ENDERCATTLE_SPAWNABLE_ON);
 
         if (!validBlock) {
             return false;
         }
+        else {
+            return true;
+        }
 
-        int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
-        return blockLight <= 7;
     }
 
     @Override
