@@ -10,6 +10,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.level.ColorResolver;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -38,26 +39,20 @@ public class ModEventHandlers {
     }
 
     @SubscribeEvent
-    public static void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((state, level, pos, tintIndex) -> {
-            if (level != null && pos != null) {
-                // tintIndex 0 = top, tintIndex 1 = side_overlay
-                return tintIndex == 0 || tintIndex == 1
-                        ? BiomeColors.getAverageGrassColor(level, pos)
-                        : 0xFFFFFFFF; // No tinting for other parts
+            if (level != null && pos != null && tintIndex == 0) {
+                return 0x9966CC;
             }
-            return 0xFFFFFFFF; // Default color fallback
-        }, ModBlocks.END_GRASS_BLOCK.get());
+            return 0xFFFFFF; // fallback color
+        }, ModBlocks.END_GRASS_BLOCK.get()
+        );
     }
 
-    @SubscribeEvent // on the mod event bus only on the physical client
-    public static void registerColorResolvers(RegisterColorHandlersEvent.ColorResolvers event) {
-        // Parameters are the current biome, the block's X position, and the block's Z position.
-        event.register((biome, x, z) -> {
-            // Replace with your own calculation. See the BiomeColors class for vanilla references.
-            // Colors are in ARGB format.
-            return 0xFFFFFFFF;
-        });
+    @SubscribeEvent
+    public static void registerColorResolvers(RegisterColorHandlersEvent.ColorResolvers event){
+        ColorResolver FOG = (biome, x, z) -> biome.getSpecialEffects().getFogColor();
+        event.register(FOG);
     }
 
 }

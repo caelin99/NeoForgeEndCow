@@ -1,11 +1,13 @@
 package com.caelin.endercattle.worldgen.util;
 
 import com.caelin.endercattle.EnderCattle;
+import com.caelin.endercattle.registrars.ModBlocks;
 import com.caelin.endercattle.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +23,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.ENDERCATTLE_SPAWNABLE_ON)
                 .add(Blocks.GRASS_BLOCK)
                 .add(Blocks.END_STONE)
+                .add(ModBlocks.END_DIRT.get())
+                .add(ModBlocks.END_GRASS_BLOCK.get())
                 .addOptionalTag(BlockTags.DIRT);
 
     }

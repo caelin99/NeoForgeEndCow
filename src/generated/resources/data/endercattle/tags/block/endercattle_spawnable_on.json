@@ -2,6 +2,8 @@
   "values": [
     "minecraft:grass_block",
     "minecraft:end_stone",
+    "endercattle:end_dirt",
+    "endercattle:end_grass_block",
     {
       "id": "#minecraft:dirt",
       "required": false
