@@ -29,6 +29,8 @@ public class ModBlocks {
             "end_grass_block", registryName ->
                     new GrassBlock(BlockBehaviour.Properties.of()
                             .setId(ResourceKey.create(Registries.BLOCK, registryName))
+                            .sound(SoundType.WET_GRASS)
+                            .strength(0.6F, 0.6F)
                             .randomTicks()
                     )
     );

@@ -1,9 +1,9 @@
-// 1.21.4	2025-07-11T01:06:44.7787476	Model Definitions - endercattle
+// 1.21.4	2025-07-11T15:28:39.78706445	Model Definitions - endercattle
 3399ed90ad4425608126935b594422dd7cd85d02 assets/endercattle/blockstates/end_dirt.json
 d45e217a9b0f5da283cdecd025ef10d3c03cd815 assets/endercattle/blockstates/end_grass_block.json
 fac281cee775b46f9d8a7749e5a2ca7a4b59391e assets/endercattle/items/end_chicken_spawn_egg.json
 bb55f4a336b43c0bddcde9a5c0aea0847d1c0887 assets/endercattle/items/end_cow_spawn_egg.json
 6794a5da8ea5386a3de6a6f8a06f364966738908 assets/endercattle/items/end_dirt_item.json
-5014bc9e7e222120b2b312f1a6b5bb99fe3673ae assets/endercattle/items/end_grass_block_item.json
+e76bf90444a50df4a5115504666d7a7c1a19f7db assets/endercattle/items/end_grass_block_item.json
 7c00717daf564553e95facc7b329b525e91deed8 assets/endercattle/models/block/end_dirt.json
 f0383c5e666292866140c54d53e6d4875100fca3 assets/endercattle/models/block/end_grass_block.json

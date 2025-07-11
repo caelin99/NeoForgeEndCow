@@ -5,6 +5,7 @@ import com.caelin.endercattle.EnderCattle;
 import com.caelin.endercattle.client.model.ModModelProvider;
 import com.caelin.endercattle.worldgen.biome.EndFieldsBiomeProvider;
 import com.caelin.endercattle.worldgen.biome_modifiers.EndSpawnModifiers;
+import com.caelin.endercattle.worldgen.loot.ModBlockLootSubProvider;
 import com.caelin.endercattle.worldgen.loot.ModEntityLootSubProvider;
 import com.caelin.endercattle.worldgen.util.ModBlockTagsProvider;
 import net.minecraft.core.RegistrySetBuilder;
@@ -44,7 +45,11 @@ public class DataGenerators {
                 Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
                         ModEntityLootSubProvider::new,
-                        LootContextParamSets.EMPTY)
+                        LootContextParamSets.ENTITY),
+                        new LootTableProvider.SubProviderEntry(
+                                ModBlockLootSubProvider::new,
+                                LootContextParamSets.BLOCK
+                        )
                 ),
                 lookupProvider)
         );

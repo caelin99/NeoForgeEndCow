@@ -1,3 +1,5 @@
-// 1.21.4	2025-07-04T21:02:41.985153134	Loot Tables
-36855ff55385a1a7988e37f241b277f7b055eb0b data/endercattle/loot_table/entities/end_chicken.json
-d819b430f50059b80db591e80c64ed0c24d4e640 data/endercattle/loot_table/entities/end_cow.json
+// 1.21.4	2025-07-11T15:55:11.060091859	Loot Tables
+28dc3885ee31bc155319fb39d0abc4c7cd7be21a data/endercattle/loot_table/blocks/end_dirt.json
+f155841df1005967f7a0f0c24b3599511d9902d3 data/endercattle/loot_table/blocks/end_grass_block.json
+d7f7d9d59adfb264644b56a20a70912be9a86e01 data/endercattle/loot_table/entities/end_chicken.json
+0e5791e90178ad3ca93c106555a145e782bf79cc data/endercattle/loot_table/entities/end_cow.json

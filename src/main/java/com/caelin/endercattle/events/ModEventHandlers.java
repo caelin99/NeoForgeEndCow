@@ -1,11 +1,13 @@
 package com.caelin.endercattle.events;
 
 import com.caelin.endercattle.EnderCattle;
+import com.caelin.endercattle.models.item.EndGrassTint;
 import com.caelin.endercattle.registrars.ModBlocks;
 import com.caelin.endercattle.registrars.ModEntities;
 import com.caelin.endercattle.client.entity.EndChicken;
 import com.caelin.endercattle.client.entity.EndCow;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Chicken;
@@ -46,6 +48,14 @@ public class ModEventHandlers {
             }
             return 0xFFFFFF; // fallback color
         }, ModBlocks.END_GRASS_BLOCK.get()
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerItemTintSources(RegisterColorHandlersEvent.ItemTintSources event) {
+        event.register(
+                ResourceLocation.fromNamespaceAndPath(EnderCattle.MODID, "end_grass_tint"),
+                EndGrassTint.MAP_CODEC
         );
     }
 
