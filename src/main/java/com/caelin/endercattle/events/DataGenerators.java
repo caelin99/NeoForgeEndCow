@@ -1,8 +1,7 @@
 package com.caelin.endercattle.events;
 
 import com.caelin.endercattle.EnderCattle;
-//import com.caelin.endercattle.client.EndCowBiomeModifier;
-import com.caelin.endercattle.client.model.ModModelProvider;
+import com.caelin.endercattle.models.ModModelProvider;
 import com.caelin.endercattle.worldgen.biome.EndFieldsBiomeProvider;
 import com.caelin.endercattle.worldgen.biome_modifiers.EndSpawnModifiers;
 import com.caelin.endercattle.worldgen.loot.ModBlockLootSubProvider;
@@ -44,8 +43,9 @@ public class DataGenerators {
                 output,
                 Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
-                        ModEntityLootSubProvider::new,
-                        LootContextParamSets.ENTITY),
+                                ModEntityLootSubProvider::new,
+                                LootContextParamSets.ENTITY
+                        ),
                         new LootTableProvider.SubProviderEntry(
                                 ModBlockLootSubProvider::new,
                                 LootContextParamSets.BLOCK

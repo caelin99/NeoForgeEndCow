@@ -1,7 +1,7 @@
 {
   "type": "neoforge:remove_spawns",
   "biomes": [
-    "minecraft:end_barrens",
+    "minecraft:end_midlands",
     "minecraft:end_highlands"
   ],
   "entity_types": "minecraft:enderman"

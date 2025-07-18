@@ -47,7 +47,7 @@ public class EndSpawnModifiers {
         bootstrapContext.register(REMOVE_ENDERMAN,
                 new BiomeModifiers.RemoveSpawnsBiomeModifier(
                         HolderSet.direct(
-                                biomes.getOrThrow(Biomes.END_BARRENS),
+                                biomes.getOrThrow(Biomes.END_MIDLANDS),
                                 biomes.getOrThrow(Biomes.END_HIGHLANDS)),
                                 HolderSet.direct(
                                         entities.getOrThrow(endermanKey))

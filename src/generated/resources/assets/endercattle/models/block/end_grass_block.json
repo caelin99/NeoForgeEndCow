@@ -79,6 +79,7 @@
   "textures": {
     "bottom": "endercattle:block/end_dirt",
     "overlay": "endercattle:block/end_grass_block_side_overlay",
+    "particle": "endercattle:block/end_grass_block_side",
     "side": "endercattle:block/end_grass_block_side",
     "top": "endercattle:block/end_grass_block_top"
   }

@@ -23,7 +23,7 @@ public record EndGrassTint(int defaultColor) implements ItemTintSource {
     @Override
     public int calculate(@NotNull ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity) {
         // You can sample biome tint or use a static one
-        return 0x9966CC; // your End grass purple tint
+        return 0x825D8D; // your End grass purple tint
     }
 
     @Override

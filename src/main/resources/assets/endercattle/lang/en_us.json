@@ -7,10 +7,9 @@
   "item.endercattle.end_cow_spawn_egg": "End Cow Spawn Egg",
   "item.endercattle.end_chicken_spawn_egg": "End Chicken Spawn Egg",
   "item.endercattle.end_dirt_item": "End Dirt",
-  "item.endercattle.end_grass_block_item": "End Grass Block",
 
-  "block.endercattle.end_dirt": "End Dirt",
-  "block.endercattle.end_grass_block": "End Grass Block",
+  "block.endercattle.end_dirt_item": "End Dirt",
+  "block.endercattle.end_grass_block_item": "End Grass Block",
 
   "itemGroup.endercattle": "Ender Cattle"
 }

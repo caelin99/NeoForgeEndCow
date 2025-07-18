@@ -44,7 +44,7 @@ public class ModEventHandlers {
     public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((state, level, pos, tintIndex) -> {
             if (level != null && pos != null && tintIndex == 0) {
-                return 0x9966CC;
+                return 0x825D8D;
             }
             return 0xFFFFFF; // fallback color
         }, ModBlocks.END_GRASS_BLOCK.get()

@@ -1,6 +1,8 @@
 package com.caelin.endercattle.registrars;
 
 import com.caelin.endercattle.EnderCattle;
+import com.caelin.endercattle.blocks.EndGrassBlock;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageEffects;
@@ -27,7 +29,7 @@ public class ModBlocks {
 
     public static final DeferredBlock<GrassBlock> END_GRASS_BLOCK = BLOCKS.register(
             "end_grass_block", registryName ->
-                    new GrassBlock(BlockBehaviour.Properties.of()
+                    new EndGrassBlock(BlockBehaviour.Properties.of()
                             .setId(ResourceKey.create(Registries.BLOCK, registryName))
                             .sound(SoundType.WET_GRASS)
                             .strength(0.6F, 0.6F)

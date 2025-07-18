@@ -1,4 +1,4 @@
-package com.caelin.endercattle.item;
+package com.caelin.endercattle.items;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;

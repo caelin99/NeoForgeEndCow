@@ -15,6 +15,7 @@ public class BlockModelTemplates {
                     .requiredTextureSlot(TextureSlot.SIDE)
                     .requiredTextureSlot(TextureSlot.TOP)
                     .requiredTextureSlot(TextureSlot.BOTTOM)
+                    .requiredTextureSlot(TextureSlot.PARTICLE)
                     .requiredTextureSlot(OverlayTextureSlot.OVERLAY)
                     .element(element -> {
                         element.from(0, 0, 0).to(16, 16, 16);

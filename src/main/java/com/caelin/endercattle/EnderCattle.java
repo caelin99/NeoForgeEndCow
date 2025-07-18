@@ -1,6 +1,7 @@
 package com.caelin.endercattle;
 
-import com.caelin.endercattle.item.EndChickenSpawnEggItem;
+import com.caelin.endercattle.blocks.EndGrassBlock;
+import com.caelin.endercattle.items.EndChickenSpawnEggItem;
 import com.caelin.endercattle.client.entity.renderer.EndChickenRenderer;
 import com.caelin.endercattle.client.entity.renderer.EndCowRenderer;
 import com.caelin.endercattle.registrars.*;
@@ -11,7 +12,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -29,6 +29,7 @@ import terrablender.api.EndBiomeRegistry;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import terrablender.api.SurfaceRuleManager;
+
 
 @Mod(EnderCattle.MODID)
 public class EnderCattle {

@@ -1,4 +1,4 @@
-package com.caelin.endercattle.item;
+package com.caelin.endercattle.items;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;

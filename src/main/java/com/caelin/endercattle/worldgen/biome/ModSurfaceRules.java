@@ -22,27 +22,35 @@ public class ModSurfaceRules {
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
                         SurfaceRules.isBiome(ModBiomes.END_FIELDS),
-                        // CHANGE TO END GRASS
                         SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                         SurfaceRules.sequence(END_GRASS)
                                 ),
                                 SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                        SurfaceRules.sequence(END_DIRT))
+                                        SurfaceRules.sequence(END_DIRT)
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.noiseCondition(Noises.SURFACE, 0.4D, 1.0D),
+                                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.0D, 1.5D),
+                                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.5D, 2.0D),
+                                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
+                                )
                         )
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(Noises.SURFACE, 0.4D, 1.0D),
-                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.0D, 1.5D),
-                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.5D, 2.0D),
-                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
                 )
         );
+//                SurfaceRules.ifTrue(
+//                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.0D, 1.5D),
+//                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
+//                )
+//                SurfaceRules.ifTrue(
+//                        SurfaceRules.noiseCondition(Noises.SURFACE, 1.5D, 2.0D),
+//                        SurfaceRules.state(ModBlocks.END_GRASS_BLOCK.get().defaultBlockState())
+//                )
     }
 }

@@ -1,13 +1,9 @@
 package com.caelin.endercattle.registrars;
 
 import com.caelin.endercattle.EnderCattle;
-import com.caelin.endercattle.item.EndCowSpawnEggItem;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import javax.swing.*;
 
 public class ModItems {
 
